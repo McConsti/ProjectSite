@@ -23,40 +23,9 @@ authedUsers = {
 
 }
 
-@app.get("/")
-def root():
-    return {"message": "This place is boring. Go see something else!"}
-
-app.get("/webapi/ISDK/AuthUser/{steam_id}")
-def index(steam_id: int):
-	if steam_id == 8888:
-		print("cool")
-	else:
-		print("not cool")
-		return {"error": "get the fard outta here"}
-
-@app.get("/sec/", response_class=HTMLResponse)
-def sec(request: Request):
+@app.get("/", response_class=HTMLResponse)
+def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-
-@app.post("/api/interlope/")
-def interlope(key: int):
-    if key == 2:
-        print("Kill me")
-        return {"message": "key is yes"}
-    else:
-        return {"error": "get the fard outta here"}
-
-@app.post("/api/logon")
-def logon(token: str):
-    for id in authedUsers:
-        if authedUsers[id]["token"] == token:
-            return authedUsers[id]["name"]
-    return {"Data": "You are not authorized to access the Service System"}
-
-@app.get('/api/version')
-def sendversion():
-    return {BackendVersion}
 
 
 if __name__ == '__main__':
