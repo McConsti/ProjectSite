@@ -6,7 +6,7 @@ from starlette.requests import Request
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 
-templates = Jinja2Templates(directory="fardPlaytimeSite")
+templates = Jinja2Templates(directory="website")
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static") #Mounts the static directory in the root of the project so that index.html can pull assets
