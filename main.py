@@ -22,5 +22,8 @@ def root(request: Request):
 def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/videos", response_class=HTMLResponse)  
+def root(request: Request):
+    return templates.TemplateResponse("vidplaybacktest.html", {"request": request})
 if __name__ == '__main__':
     uvicorn.run(app, host='192.168.178.20', port=8080) #My local ip so I can test easier

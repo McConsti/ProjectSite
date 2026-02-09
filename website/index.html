@@ -1,8 +1,8 @@
-<!doctype html>
-<html lang="de">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<!DOCTYPE html>
+<!-- saved from url=(0416)https://taskcards.s3.hidrive.strato.com/attachments/9a1f5a81-043d-486a-aaaf-d308e6e87f4a?response-content-disposition=filename%3DUntitled-1.html&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AHS49RUS6XLXF0S0CNIF%2F20260209%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260209T090738Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a0f0fe54427b3c2be9cefa073b9a5bf04d29ee01112d7c14a56f0eaff82e718f -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>ProjektPresentation</title>
 </head>
 <body>
@@ -34,18 +34,16 @@
     <main class="quiz" aria-live="polite">
         <header>
             <h1>Quiz Projekt Presentation</h1>
-            <div class="progress" id="progress">Frage 1 / 1</div>
+            <div class="progress" id="progress">Frage 1/3</div>
         </header>
 
         <section class="card">
-            <h2 id="question">Frage hier eingeben</h2>
+            <h2 id="question">jaja?</h2>
 
-            <form id="choices" class="choices" onsubmit="return false">
-            
-            </form>
+            <form id="choices" class="choices" onsubmit="return false"><label class="choice" for="c-0"><input type="radio" name="choice" id="c-0" value="0"> <span>1</span></label><label class="choice" for="c-1"><input type="radio" name="choice" id="c-1" value="1"> <span>2</span></label><label class="choice" for="c-2"><input type="radio" name="choice" id="c-2" value="2"> <span>3</span></label></form>
 
             <div class="controls">
-                <button id="prev">Zurück</button>
+                <button id="prev" style="display: none;">Zurück</button>
                 <button id="next" class="primary">Weiter</button>
                 <button id="submit" style="display:none">Abgeben</button>
             </div>
@@ -90,7 +88,7 @@ const resultEl = document.getElementById('result');
 function render() {
     const q = questions[current] || {question: '', choices: ['','','']};
     qEl.textContent = q.question || `Frage ${current+1} hier eingeben`;
-    progEl.textContent = `Frage ${current+1} / ${questions.length}`;
+    progEl.textContent = `Frage ${current+1}/${questions.length}`;
     choicesEl.innerHTML = '';
     q.choices.slice(0,3).forEach((c,i)=>{
         const id = `c-${i}`;
@@ -118,7 +116,7 @@ submitBtn.addEventListener('click', ()=> {
     let score=0;
     questions.forEach((q,i)=>{ if(userAnswers[i]===q.answer) score++; });
     resultEl.style.display = '';
-    let details = `<strong>Ergebnis:</strong> ${score} / ${questions.length}<br><br>`;
+    let details = `<strong>Ergebnis:</strong> ${score}/${questions.length}<br><br>`;
     questions.forEach((q,i)=>{
         const isCorrect = userAnswers[i] === q.answer;
         const userChoice = userAnswers[i] !== null ? q.choices[userAnswers[i]] : 'Keine Antwort';
@@ -135,5 +133,5 @@ submitBtn.addEventListener('click', ()=> {
 
 render();
 </script>
-</body>
-</html>
+
+</body></html>
