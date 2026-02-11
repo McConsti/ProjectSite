@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0416)https://taskcards.s3.hidrive.strato.com/attachments/9a1f5a81-043d-486a-aaaf-d308e6e87f4a?response-content-disposition=filename%3DUntitled-1.html&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AHS49RUS6XLXF0S0CNIF%2F20260209%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260209T090738Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a0f0fe54427b3c2be9cefa073b9a5bf04d29ee01112d7c14a56f0eaff82e718f -->
+<!-- UNHOLY frontend code by jannis -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>ProjektPresentation</title>
 </head>
 <body>
+    <!-- This stylesheet code is ugly af but it works -->
 <style>
     :root{--accent:#ff6b6b;--muted:#999}
     *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
@@ -56,6 +57,8 @@
 
 <script>
 /* Fragen freilassen: fülle dieses Array in script.js oder direkt hier */
+//BRO ES GIBT KEIN SCRIPT.JS
+//Ändere einfach die fragen hier
 const questions = [
     {
         question: "jaja?",
@@ -84,7 +87,7 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const submitBtn = document.getElementById('submit');
 const resultEl = document.getElementById('result');
-
+//Viel spaß rauszufinden was dieser block macht
 function render() {
     const q = questions[current] || {question: '', choices: ['','','']};
     qEl.textContent = q.question || `Frage ${current+1} hier eingeben`;
