@@ -13,7 +13,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static") #Mounts the
 
 
 
-
 @app.get("/", response_class=HTMLResponse)  #Set the api path for the site which is displayed by default
 def root(request: Request):
     return templates.TemplateResponse("homepage.html", {"request": request})
@@ -27,4 +26,4 @@ def root(request: Request):
     return templates.TemplateResponse("vidplaybacktest.html", {"request": request})
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='192.168.100.230', port=8080) #My local ip so I can test easier
+    uvicorn.run(app, host='192.168.100.44', port=80) #My local ip so I can test easier
