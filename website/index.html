@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<!-- UNHOLY frontend code by jannis -->
+<!-- saved from url=(0033)http://127.0.0.1:5500/index2.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>ProjektPresentation</title>
 </head>
 <body>
-    <!-- This stylesheet code is ugly af but it works -->
 <style>
     :root{--accent:#ff6b6b;--muted:#999}
     *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
@@ -35,30 +34,28 @@
     <main class="quiz" aria-live="polite">
         <header>
             <h1>Quiz Projekt Presentation</h1>
-            <div class="progress" id="progress">Frage 1/3</div>
+            <div class="progress" id="progress">Frage 3/3</div>
         </header>
 
         <section class="card">
-            <h2 id="question">jaja?</h2>
+            <h2 id="question">jahier</h2>
 
-            <form id="choices" class="choices" onsubmit="return false"><label class="choice" for="c-0"><input type="radio" name="choice" id="c-0" value="0"> <span>1</span></label><label class="choice" for="c-1"><input type="radio" name="choice" id="c-1" value="1"> <span>2</span></label><label class="choice" for="c-2"><input type="radio" name="choice" id="c-2" value="2"> <span>3</span></label></form>
+            <form id="choices" class="choices" onsubmit="return false"><label class="choice" for="c-0"><input type="radio" name="choice" id="c-0" value="0"> <span>3</span></label><label class="choice" for="c-1"><input type="radio" name="choice" id="c-1" value="1"> <span>2</span></label><label class="choice" for="c-2"><input type="radio" name="choice" id="c-2" value="2"> <span>1</span></label></form>
 
             <div class="controls">
-                <button id="prev" style="display: none;">Zurück</button>
-                <button id="next" class="primary">Weiter</button>
-                <button id="submit" style="display:none">Abgeben</button>
+                <button id="prev">Zurück</button>
+                <button id="next" class="primary" style="display: none;">Weiter</button>
+                <button id="submit">Abgeben</button>
             </div>
 
-            <div id="result" class="result" style="display:none"></div>
+            <div id="result" class="result"><strong class="fail">Ergebnis: 0/3 (0%)</strong><br><strong class="fail">✗ Nicht bestanden</strong><br><br>Frage 1: ✗ Falsch<br>Deine Antwort: Keine Antwort<br>Richtige Antwort: 1<br><br>Frage 2: ✗ Falsch<br>Deine Antwort: Keine Antwort<br>Richtige Antwort: 8<br><br>Frage 3: ✗ Falsch<br>Deine Antwort: Keine Antwort<br>Richtige Antwort: 3<br><br><img src="./ProjektPresentation2_files/durchgefallen.jpg" alt="Result" class="result-image"></div>
             <p class="small" style="margin-top:12px"></p>
-        </section>
+        <button class="primary" style="margin-top: 12px;">Neu starten</button></section>
     </main>
 </div>
 
 <script>
 /* Fragen freilassen: fülle dieses Array in script.js oder direkt hier */
-//BRO ES GIBT KEIN SCRIPT.JS
-//Ändere einfach die fragen hier
 const questions = [
     {
         question: "Was sind die Aufgaben eines Coders?",
@@ -87,7 +84,7 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const submitBtn = document.getElementById('submit');
 const resultEl = document.getElementById('result');
-//Viel spaß rauszufinden was dieser block macht
+
 function render() {
     const q = questions[current] || {question: '', choices: ['','','']};
     qEl.textContent = q.question || `Frage ${current+1} hier eingeben`;
@@ -136,5 +133,106 @@ submitBtn.addEventListener('click', ()=> {
 
 render();
 </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 
-</body></html>
+
+<style>
+    .result-image{max-width:100%;margin-top:16px;border-radius:8px}
+    .pass{color:#4ade80}
+    .fail{color:#ff6b6b}
+</style>
+<script>
+    const passThreshold = 0.5;
+    const passImage = 'https://www.geschenkefuerfreunde.de/media/catalog/product/cache/dd52b1388a82ee18373655a0f5bc8517/m/i/minicard-bestanden.jpg';
+    const failImage = 'https://prisma-hsg.ch/wp-content/uploads/2013/03/durchgefallen.jpg';
+    
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        let score = 0;
+        questions.forEach((q, i) => {
+            if(userAnswers[i] === q.answer) score++;
+        });
+        
+        const percentage = score / questions.length;
+        const passed = percentage >= passThreshold;
+        
+        resultEl.style.display = '';
+        let details = `<strong class="${passed ? 'pass' : 'fail'}">Ergebnis: ${score}/${questions.length} (${Math.round(percentage * 100)}%)</strong><br>`;
+        details += `<strong class="${passed ? 'pass' : 'fail'}">${passed ? '✓ Bestanden!' : '✗ Nicht bestanden'}</strong><br><br>`;
+        
+        questions.forEach((q, i) => {
+            const isCorrect = userAnswers[i] === q.answer;
+            const userChoice = userAnswers[i] !== null ? q.choices[userAnswers[i]] : 'Keine Antwort';
+            details += `Frage ${i+1}: ${isCorrect ? '✓ Richtig' : '✗ Falsch'}<br>`;
+            details += `Deine Antwort: ${userChoice}<br>`;
+            if(!isCorrect) details += `Richtige Antwort: ${q.choices[q.answer]}<br>`;
+            details += '<br>';
+        });
+        
+        details += `<img src="${passed ? passImage : failImage}" alt="Result" class="result-image">`;
+        resultEl.innerHTML = details;
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+</script>
+<script>
+    // Reset-Funktionalität hinzufügen
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Neu starten';
+    resetBtn.className = 'primary';
+    resetBtn.style.display = 'none';
+    resetBtn.style.marginTop = '12px';
+    resetBtn.addEventListener('click', () => {
+        current = 0;
+        userAnswers.fill(null);
+        resultEl.style.display = 'none';
+        resetBtn.style.display = 'none';
+        nextBtn.style.display = '';
+        prevBtn.style.display = 'none';
+        submitBtn.style.display = 'none';
+        render();
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+    resultEl.parentElement.appendChild(resetBtn);
+    
+    const originalSubmitListener = submitBtn.onclick;
+    submitBtn.addEventListener('click', () => {
+        resetBtn.style.display = '';
+    });
+</script></body></html>
